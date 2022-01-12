@@ -1,0 +1,250 @@
+import time
+import random
+print("****Python Mini Project*****")
+print("...Welcome to Our Portal...")
+print("Do u want to see The Comapny's Information...!")
+b=input("please Enter Yes and No...!")
+
+if b=="Yes":
+    a = input("Please Enter Your Name..!")
+    print(a)
+    print("welcome to Tata technology!",a)
+    time.sleep(3)
+    print("Do u wan't to see the company More Information....",a)
+    c=input("Enter Yes or No:)")
+    if c=="Yes":
+        print('''Tata Technologies Limited is a company in the Tata Group that provides services in Engineering and Design (E&D),
+ Product Lifecycle Management (PLM),Enterprise Solutions, manufacturing and product development IT services to Tier 1 automotive 
+and aerospace OEMs and their suppliers. The company is active in North America, Europe, the Middle East and the Asia Pacific region.
+        \nThe company was founded in 1989 and acquired INCAT, a European-based company, in 2005. Tata Technologies is internationally 
+head-quartered in Singapore, with regional headquarters in the United States (Novi, Michigan),India (Rajiv Gandhi Infotech Park in Hinjewadi - outside Pune)
+and the UK (Coventry). The company operates in 14 countries and has a combined global work force of more than 5,200 employees.
+         \nThe new (April 2011) Vehicle Programs & Development (VPD) Group provides multiple engineering and design solutions, 
+including comprehensive product development.
+         \nThe group works across multiple domains, including:[citation needed]
+Product Design
+Vehicle CAE
+Body Structures
+Exteriors
+Interiors
+Chassis
+Powertrain
+Electrical
+Digital Manufacturing
+PLM and IT \nTata Technologies employs more than 5,200 professionals worldwide representing 27 different nationalities and operates 
+U.S.-based and offshore engineering and design delivery centers.
+Kevin Fisher, President of the VPD Group, is a key architect of Tata Technologies’ VPD strategy. With 30 years of international
+engineering experience, Kevin’s background includes several large-scale initiatives for major automotive OEMs, including end-to-end 
+styling of some of the industry’s most acclaimed vehicles. He has managed complete-vehicle engineering projects, major facelifts, body
+ in white (BIW),closures platforms, and truck and SUV programs.''')
+
+
+        time.sleep(10)
+        print("\n\nDid u see the above Paragraph",a)
+        print("Do u want to Play the Some Simple quiz....",a)
+        a1=input("Please Enter Yes or No:)")
+        score=0
+        if a1 == "Yes":
+            print("Lets Play the Quiz ",a)
+            que=input("Which Year Tata Technology was Founded? \n 1.1980 \n2.1981 ")
+            if que=="1980":
+                score+=1
+                print("your ans is Correct")
+                print()
+            else:
+                print("your ans is wrong")
+
+            que= input("Who is the cahirman of tata technology? \n 1.Ratan Tata \n2.Warren Harris ")
+            if que == "Ratan Tata":
+                score += 1
+                print("your ans is Correct")
+                print()
+            else:
+                print("your ans is wrong")
+                print()
+
+            que = input("Who is CEO of Tata Technology? \n1.Warren Harris \n2.Ratan Tata ")
+            if que == "Warren Harris":
+                score += 1
+                print("your ans is Correct")
+                print()
+            else:
+                print("your ans is wrong")
+                print()
+
+            que = input("Warren Harris is the CEO of Tata Technology? \n1.True \n2.False ")
+            if que == "True":
+                score += 1
+                print("your ans is Correct")
+                print()
+            else:
+                print("your ans is wrong")
+                print()
+
+            que = input("Tata Technology is the Subsidery of Tata Mototr? \n 1.True \n2.False ")
+            if que == "True":
+                score += 1
+                print("your ans is Correct")
+                print()
+            else:
+                print("your ans is wrong")
+                print()
+
+            print("Thank u for Playing The Quiz",a, "Your Score is=",score)
+            time.sleep(10)
+            if score>=5:
+                 print("Hey Congratulation For Completed The Quiz Suceessfully..!",a,"\n Do u wan't to Play the tik tak toe Game.")
+                 game=input("Please Enter Yes and No:")
+                 if (game == "Yes"):
+                     class TicTacToe:
+
+                         def __init__(self):
+                             self.board = []
+
+                         def create_board(self):
+                             for i in range(3):
+                                 row = []
+                                 for j in range(3):
+                                     row.append('-')
+                                 self.board.append(row)
+
+                         def get_random_first_player(self):
+                             return random.randint(0, 1)
+
+                         def fix_spot(self, row, col, player):
+                             self.board[row][col] = player
+
+                         def is_player_win(self, player):
+                             win = None
+
+                             n = len(self.board)
+
+                             # checking rows
+                             for i in range(n):
+                                 win = True
+                                 for j in range(n):
+                                     if self.board[i][j] != player:
+                                         win = False
+                                         break
+                                 if win:
+                                     return win
+
+                             # checking columns
+                             for i in range(n):
+                                 win = True
+                                 for j in range(n):
+                                     if self.board[j][i] != player:
+                                         win = False
+                                         break
+                                 if win:
+                                     return win
+
+                             # checking diagonals
+                             win = True
+                             for i in range(n):
+                                 if self.board[i][i] != player:
+                                     win = False
+                                     break
+                             if win:
+                                 return win
+
+                             win = True
+                             for i in range(n):
+                                 if self.board[i][n - 1 - i] != player:
+                                     win = False
+                                     break
+                             if win:
+                                 return win
+                             return False
+
+                             for row in self.board:
+                                 for item in row:
+                                     if item == '-':
+                                         return False
+                             return True
+
+                         def is_board_filled(self):
+                             for row in self.board:
+                                 for item in row:
+                                     if item == '-':
+                                         return False
+                             return True
+
+                         def swap_player_turn(self, player):
+                             return 'X' if player == 'O' else 'O'
+
+                         def show_board(self):
+                             for row in self.board:
+                                 for item in row:
+                                     print(item, end=" ")
+                                 print()
+
+                         def start(self):
+                             self.create_board()
+
+                             player = 'X' if self.get_random_first_player() == 1 else 'O'
+                             while True:
+                                 print(f"Player {player} turn")
+
+                                 self.show_board()
+
+                                 # taking user input
+                                 row, col = list(
+                                     map(int, input("Enter row and column numbers to fix spot: ").split()))
+                                 print()
+
+                                 # fixing the spot
+                                 self.fix_spot(row - 1, col - 1, player)
+
+                                 # checking whether current player is won or not
+                                 if self.is_player_win(player):
+                                     print(f"Player {player} wins the game!")
+                                     break
+
+                                 # checking whether the game is draw or not
+                                 if self.is_board_filled():
+                                     print("Match Draw!")
+                                     break
+
+                                 # swapping the turn
+                                 player = self.swap_player_turn(player)
+
+                             # showing the final view of board
+                             print()
+                             self.show_board()
+
+
+                     tic_tac_toe = TicTacToe()
+                     tic_tac_toe.start()
+
+                     print("Thank u For Playing The Game:)",a)
+                     time.sleep(3)
+                     print("If You Like It",a,"Please Visit Again This Portal..!")
+
+
+
+
+                 else:
+                     print("OK HAVE A GOOD DAY ",a)
+
+                     time.sleep(10)
+                     print("If You Like It",a,"Please Visit Again This Portal..!")
+
+
+
+
+            else:
+                print("Sorry Your Not Playing The Game Tic Tac Toe Please Clear The Quiz First:)")
+                print("Thank u For Used This Portal Please Visit Again..!")
+
+
+
+
+
+    elif c == "No":
+        print("sorry...!")
+
+elif b=="No":
+    print("Sorry u have not seen Anything")
+
+
